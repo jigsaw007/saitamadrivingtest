@@ -1,7 +1,7 @@
 {
   "name": "quiz-app",
   "version": "0.1.0",
-  "homepage": "https://saitamadrivingtest.com",
+"homepage": "https://saitamadrivingtest.com",
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
