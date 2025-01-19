@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "https://saitamadrivingtest.com/static/css/main.b790864b.css",
-    "main.js": "https://saitamadrivingtest.com/static/js/main.059ebabd.js",
+    "main.js": "https://saitamadrivingtest.com/static/js/main.c880d852.js",
     "index.html": "https://saitamadrivingtest.com/index.html",
     "main.b790864b.css.map": "https://saitamadrivingtest.com/static/css/main.b790864b.css.map",
-    "main.059ebabd.js.map": "https://saitamadrivingtest.com/static/js/main.059ebabd.js.map"
+    "main.c880d852.js.map": "https://saitamadrivingtest.com/static/js/main.c880d852.js.map"
   },
   "entrypoints": [
     "static/css/main.b790864b.css",
-    "static/js/main.059ebabd.js"
+    "static/js/main.c880d852.js"
   ]
 }
