@@ -15,7 +15,7 @@ import Privacy from "./pages/Privacy";
 
 function App() {
   return (
-    <Router basename="/saitamadrivingtest">
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
