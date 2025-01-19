@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/      # Example for any admin or restricted pages (add your specific paths)
+Disallow: /private/    # Add private folders if any
+
+Sitemap: https://saitamadrivingschool.com/sitemap.xml

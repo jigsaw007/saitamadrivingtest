@@ -1,0 +1,16 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+}
+
+h1, h2 {
+  font-weight: 700;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+button {
+  border-radius: 5px;
+}

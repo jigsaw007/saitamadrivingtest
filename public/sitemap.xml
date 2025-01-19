@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home Page -->
+  <url>
+    <loc>https://saitamadrivingschool.com/</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Other Pages -->
+  <url>
+    <loc>https://saitamadrivingschool.com/karimen</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://saitamadrivingschool.com/honmen</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://saitamadrivingschool.com/about</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://saitamadrivingschool.com/guide</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Set Pages -->
+  <url>
+    <loc>https://saitamadrivingschool.com/setA</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saitamadrivingschool.com/setB</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saitamadrivingschool.com/setC</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saitamadrivingschool.com/setD</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saitamadrivingschool.com/illustrations</loc>
+    <lastmod>2025-01-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>
