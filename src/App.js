@@ -12,6 +12,9 @@ import SetD from "./pages/SetD";
 import Illustrations from "./pages/Illustrations";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import RoadSigns from "./pages/RoadSigns";
+import RoadSafetyAndDriving from "./pages/RoadSafetyAndDriving";
+
 
 function App() {
   return (
@@ -22,6 +25,7 @@ function App() {
         <Route path="/guide" element={<Guide />} />
         <Route path="/honmen" element={<Honmen />} />
         <Route path="/karimen" element={<Karimen />} />
+        <Route path="/road-signs" element={<RoadSigns />} />
         <Route path="/setA" element={<SetA />} />
         <Route path="/setB" element={<SetB />} />
         <Route path="/setC" element={<SetC />} />
@@ -29,6 +33,8 @@ function App() {
         <Route path="/illustrations" element={<Illustrations />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/road-safety-and-driving" element={<RoadSafetyAndDriving />} />
+
       </Routes>
     </Router>
   );

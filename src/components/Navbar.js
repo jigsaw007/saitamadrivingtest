@@ -37,6 +37,17 @@ const Navbar = () => {
                 Karimen
               </Link>
             </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/road-signs" style={{ color: "#fff" }}>
+                Road Signs
+              </Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/road-safety-and-driving" style={{ color: "#fff" }}>
+                Road Safety & Driving
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/about" style={{ color: "#fff" }}>
                 About

@@ -117,6 +117,34 @@ const Home = () => {
                 安全運転のための確実な知識を身につけましょう。
               </p>
             </div>
+            {/* Did You Know Section */}
+<div
+  className="mt-5 p-4 rounded shadow-sm"
+  style={{ backgroundColor: "#e1f5fe", border: "1px solid #81d4fa" }}
+>
+  <h4 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
+    Did You Know? 豆知識
+  </h4>
+  <div className="row text-center">
+    <div className="col-md-4 mb-3">
+      <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
+        Japan has over 140 unique traffic signs! <br /> 日本には140以上のユニークな交通標識があります。
+      </p>
+    </div>
+    <div className="col-md-4 mb-3">
+      <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif', color: '#555" }}>
+        The average passing rate for Honmen tests is 70%. <br /> 本免許テストの合格率は平均70％です。
+      </p>
+    </div>
+    <div className="col-md-4 mb-3">
+      <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
+        Saitama has one of the highest numbers of driving schools in Japan! <br />
+        埼玉県は日本で最も多くの運転学校がある県の1つです。
+      </p>
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </div>
