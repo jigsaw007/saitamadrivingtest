@@ -34,7 +34,7 @@ const Home = () => {
           style={{ backgroundColor: "#e8f5e9", border: "1px solid #c8e6c9" }}
         >
           <h4 className="text-success mb-2" style={{ fontFamily: "'Roboto', sans-serif" }}>
-            Saitama Driving License Test - 100% Guarantee!
+            Saitama Driving License Test Practice Questions
           </h4>
           <p style={{ fontSize: "16px", color: "#555" }}>
             Designed for both AT (Automatic Transmission) and MT (Manual Transmission) users. <br />
