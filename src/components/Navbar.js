@@ -10,6 +10,7 @@ const Navbar = () => {
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Add subtle shadow
       }}
     >
+      
       <div className="container">
         <Link className="navbar-brand" to="/" style={{ color: "#fff" }}>
           Home
@@ -74,7 +75,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/driving-test-vocabulary" style={{ color: "#fff" }}>
+              <Link className="nav-link" to="/driving-test-vocabulary" style={{ color: "#fff" }}> 
                 Gloassary
               </Link>
             </li>

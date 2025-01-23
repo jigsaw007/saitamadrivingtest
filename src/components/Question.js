@@ -34,7 +34,7 @@ const Question = ({ question, onAnswer }) => {
         </div>
       )}
 
-      {/* Fixed Buttons for True/False */}
+      {/* Fixed Buttons for True/False and images */}
       <div
         style={{
           position: "absolute",
