@@ -28,6 +28,11 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
           <li className="nav-item">
+              <Link className="nav-link" to="/about" style={{ color: "#fff" }}>
+                About
+              </Link>
+            </li>
+          <li className="nav-item">
               <Link className="nav-link" to="/honmen" style={{ color: "#fff" }}>
                 Honmen
               </Link>
@@ -37,22 +42,22 @@ const Navbar = () => {
                 Karimen
               </Link>
             </li>
-
+            <li className="nav-item">
+                <Link className="nav-link" to="/road-safety-and-driving" style={{ color: "#fff" }}>
+                Road Safety & Driving
+              </Link>
+            </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/road-signs" style={{ color: "#fff" }}>
                 Road Signs
               </Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/road-safety-and-driving" style={{ color: "#fff" }}>
-                Road Safety & Driving
+              <Link className="nav-link" to="/emergency-guide" style={{ color: "#fff" }}>
+                Emergency Guide
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about" style={{ color: "#fff" }}>
-                About
-              </Link>
-            </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="/guide" style={{ color: "#fff" }}>
                 Guide
@@ -66,6 +71,11 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/privacy" style={{ color: "#fff" }}>
                 Privacy
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/driving-test-vocabulary" style={{ color: "#fff" }}>
+                Gloassary
               </Link>
             </li>
           </ul>

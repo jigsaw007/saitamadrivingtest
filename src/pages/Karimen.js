@@ -19,7 +19,7 @@ const Karimen = () => {
 
     script.async = true;
     document.body.appendChild(script);
-  
+
     return new Promise((resolve, reject) => {
       script.onload = () => {
         if (window.karimenQuestions) {
@@ -31,7 +31,6 @@ const Karimen = () => {
       script.onerror = () => reject(new Error("Failed to load karimen.js"));
     });
   };
-  
 
   // Initialize the quiz
   const startQuiz = async () => {
@@ -83,13 +82,26 @@ const Karimen = () => {
             <div key={index} className="mt-4">
               <h5 className="text-danger">Question {index + 1}:</h5>
               <p>{question.question}</p>
-              {question.image && (
+              {question.image && question.image.trim() !== "" ? ( // Check if image exists and is not empty
                 <img
-                src={`${process.env.PUBLIC_URL}/karimenimg/${question.image}`}
-  alt="Question"
-  className="img-fluid mb-3"
-  style={{ maxHeight: "200px", borderRadius: "10px" }}
-/>
+                  src={`${process.env.PUBLIC_URL}/karimenimg/${question.image}`}
+                  alt="Question"
+                  className="img-fluid mb-3"
+                  style={{ maxHeight: "200px", borderRadius: "10px" }}
+                />
+              ) : (
+                // Placeholder for consistent spacing when no image is available
+                <div
+                  className="mb-3 d-flex align-items-center justify-content-center"
+                  style={{
+                    height: "200px",
+                    backgroundColor: "#f8f9fa",
+                    borderRadius: "10px",
+                    border: "1px dashed #ccc",
+                  }}
+                >
+                  <span style={{ color: "#777", fontSize: "14px" }}>No Image Available</span>
+                </div>
               )}
               <div
                 className="mb-2 p-2 bg-danger text-white"

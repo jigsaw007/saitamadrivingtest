@@ -33,6 +33,30 @@ const RoadSafetyAndDriving = () => {
         "Yield at crosswalks and give cyclists enough space when overtaking. Always be alert for vulnerable road users.",
       icon: "🚶‍♂️🚴‍♀️",
     },
+    {
+      title: "Use Seat Belts at All Times",
+      description:
+        "Ensure all passengers are wearing seat belts. Seat belts significantly reduce the risk of injury in case of an accident.",
+      icon: "🚗💺",
+    },
+    {
+      title: "Avoid Fatigue While Driving",
+      description:
+        "Take regular breaks during long drives. Fatigue can impair your reaction time and decision-making abilities.",
+      icon: "😴",
+    },
+    {
+      title: "Obey Traffic Signals and Signs",
+      description:
+        "Always follow traffic signals, stop signs, and road markings. Ignoring them can lead to accidents and penalties.",
+      icon: "🚦",
+    },
+    {
+      title: "Use Child Safety Seats",
+      description:
+        "Children under a certain age or height must use appropriate child safety seats. Ensure they are properly installed.",
+      icon: "👶",
+    },
   ];
 
   const maintenanceTips = [
@@ -66,6 +90,30 @@ const RoadSafetyAndDriving = () => {
         "A clean air filter improves engine performance and reduces emissions. Replace it every 12,000-15,000 km.",
       icon: "🌬️",
     },
+    {
+      title: "Check Battery Health",
+      description:
+        "Inspect the battery terminals for corrosion and ensure the battery is fully charged, especially during winter.",
+      icon: "🔋",
+    },
+    {
+      title: "Inspect Windshield Wipers",
+      description:
+        "Replace worn-out wiper blades to ensure clear visibility during rain or snow.",
+      icon: "🚿",
+    },
+    {
+      title: "Monitor Engine Performance",
+      description:
+        "Pay attention to unusual noises, vibrations, or warning lights. Address any issues promptly to avoid costly repairs.",
+      icon: "🚗🔧",
+    },
+    {
+      title: "Rotate Tires Regularly",
+      description:
+        "Rotate your tires every 8,000-10,000 km to ensure even wear and extend their lifespan.",
+      icon: "🔄",
+    },
   ];
 
   const penaltyPointsInfo = [
@@ -94,6 +142,26 @@ const RoadSafetyAndDriving = () => {
       points: 2,
       penalty: "¥12,000 fine",
     },
+    {
+      offense: "Using a Mobile Phone While Driving",
+      points: 3,
+      penalty: "¥18,000 fine",
+    },
+    {
+      offense: "Driving Without a Valid License",
+      points: 25,
+      penalty: "¥300,000 fine and possible imprisonment",
+    },
+    {
+      offense: "Illegal Parking",
+      points: 2,
+      penalty: "¥15,000 fine and possible towing",
+    },
+    {
+      offense: "Failure to Wear Seat Belts",
+      points: 1,
+      penalty: "¥7,000 fine",
+    },
   ];
 
   const drivingInJapanTips = [
@@ -121,6 +189,28 @@ const RoadSafetyAndDriving = () => {
       title: "Parking Regulations",
       description:
         "Illegal parking can result in heavy fines and towing. Use designated parking lots or spaces.",
+    },
+    {
+      title: "Emergency Numbers",
+      description:
+        "In case of an emergency, dial 110 for police and 119 for ambulance or fire services.",
+    },
+    {
+      title: "Driving in Rural Areas",
+      description:
+        "Be cautious when driving in rural areas, as roads may be narrow and poorly lit. Watch out for wildlife and agricultural vehicles.",
+    },
+    {
+      title: "Winter Driving Tips",
+      description:
+        "In snowy areas, use winter tires or chains. Drive slowly and maintain a safe distance from other vehicles.",
+      icon: "❄️",
+    },
+    {
+      title: "Understanding Japanese Road Signs",
+      description:
+        "Familiarize yourself with Japanese road signs, as some may differ from those in other countries.",
+      icon: "🛑",
     },
   ];
 
@@ -207,7 +297,7 @@ const RoadSafetyAndDriving = () => {
             {drivingInJapanTips.map((tip, index) => (
               <div key={index} className="col-md-6 mb-4">
                 <div className="card shadow-sm p-3" style={{ borderRadius: "10px" }}>
-                  <h4>{tip.title}</h4>
+                  <h4>{tip.icon ? `${tip.icon} ${tip.title}` : tip.title}</h4>
                   <p>{tip.description}</p>
                 </div>
               </div>

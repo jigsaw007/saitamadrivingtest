@@ -12,7 +12,7 @@ const Question = ({ question, onAnswer }) => {
       <h2 className="mb-4">{question.question}</h2>
 
       {/* Conditional rendering for image */}
-      {question.image ? (
+      {question.image && question.image.trim() !== "" ? ( // Check if image exists and is not empty
         <img
         src={`${process.env.PUBLIC_URL}/${question.image}`}
           alt="Question"
