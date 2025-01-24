@@ -1,35 +1,55 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Question from "../components/Question";
-import ProgressBar from "../components/ProgressBar"; // New ProgressBar component
+import ProgressBar from "../components/ProgressBar";
 
 const SetA = () => {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [isQuizComplete, setIsQuizComplete] = useState(false);
-  const [userAnswers, setUserAnswers] = useState([]); // Track user answers
+  const [userAnswers, setUserAnswers] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/data/setA.json`)
       .then((response) => response.json())
       .then((data) => {
-        const shuffledQuestions = data.sort(() => Math.random() - 0.5); // Shuffle questions
+        const shuffledQuestions = data.sort(() => Math.random() - 0.5);
         setQuestions(shuffledQuestions);
       });
   }, []);
-  
+
+  const saveScore = (score, totalQuestions) => {
+    const date = new Date();
+    const scoreEntry = {
+      score: score,
+      total: totalQuestions,
+      date: date.toLocaleDateString(),
+      time: date.toLocaleTimeString(),
+    };
+
+    const savedScores = JSON.parse(localStorage.getItem("honmenScores")) || {
+      setA: [],
+      setB: [],
+      setC: [],
+      setD: [],
+      illustrations: [],
+    };
+    savedScores.setA.unshift(scoreEntry); // Add new score to the beginning of the array
+    localStorage.setItem("honmenScores", JSON.stringify(savedScores));
+  };
 
   const handleAnswer = (isCorrect, userResponse) => {
-    setUserAnswers([...userAnswers, userResponse]); // Store user response
+    setUserAnswers([...userAnswers, userResponse]);
 
     if (isCorrect) {
       setScore(score + 1);
     }
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1); // Move to the next question
+      setCurrentIndex(currentIndex + 1);
     } else {
-      setIsQuizComplete(true); // End the quiz
+      setIsQuizComplete(true);
+      saveScore(score + (isCorrect ? 1 : 0), questions.length); // Save the score
     }
   };
 
@@ -43,11 +63,11 @@ const SetA = () => {
           Your Score: <strong>{score} / {questions.length}</strong>
         </p>
         <h2
-          className={score >= (questions.length * 0.9) ? "text-success text-center" : "text-danger text-center"}
+          className={score >= questions.length * 0.9 ? "text-success text-center" : "text-danger text-center"}
         >
-          {score >= (questions.length * 0.9) ? "PASS" : "FAIL"}
+          {score >= questions.length * 0.9 ? "PASS" : "FAIL"}
         </h2>
-        <h3 className="mt-4" style={{ fontFamily: "'Poppins', sans-serif'" }}>Review Your Mistakes</h3>
+        <h3 className="mt-4" style={{ fontFamily: "'Poppins', sans-serif" }}>Review Your Mistakes</h3>
         {questions.map((question, index) => {
           const userResponse = userAnswers[index];
           const isCorrect = String(question.answer) === String(userResponse);
@@ -60,11 +80,11 @@ const SetA = () => {
               <p>{question.question}</p>
               {question.image && (
                 <img
-                src={`${process.env.PUBLIC_URL}/karimenimg/${question.image}`}
-  alt="Question"
-  className="img-fluid mb-3"
-  style={{ maxHeight: "200px", borderRadius: "10px" }}
-/>
+                  src={`${process.env.PUBLIC_URL}/karimenimg/${question.image}`}
+                  alt="Question"
+                  className="img-fluid mb-3"
+                  style={{ maxHeight: "200px", borderRadius: "10px" }}
+                />
               )}
               <div
                 className={`mb-2 p-2 ${
@@ -102,12 +122,9 @@ const SetA = () => {
         ) : (
           questions.length > 0 && (
             <div className="card p-4 shadow mt-4" style={{ minHeight: "400px" }}>
-              {/* Question content */}
               <Question
                 question={questions[currentIndex]}
-                onAnswer={(isCorrect, userResponse) =>
-                  handleAnswer(isCorrect, userResponse)
-                }
+                onAnswer={(isCorrect, userResponse) => handleAnswer(isCorrect, userResponse)}
               />
             </div>
           )

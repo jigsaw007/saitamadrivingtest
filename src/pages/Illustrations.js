@@ -7,7 +7,7 @@ const Illustrations = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [isQuizComplete, setIsQuizComplete] = useState(false);
-  const [userAnswers, setUserAnswers] = useState([]); // Track user answers
+  const [userAnswers, setUserAnswers] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/data/illustrations.json`)
@@ -19,24 +19,45 @@ const Illustrations = () => {
   }, []);
 
   const getRandomQuestions = (questionsArray, count) => {
-    const shuffled = [...questionsArray]; // Create a copy of the array
+    const shuffled = [...questionsArray];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    return shuffled.slice(0, count); // Return the first 'count' questions from shuffled array
+    return shuffled.slice(0, count);
+  };
+
+  const saveScore = (score, totalQuestions) => {
+    const date = new Date();
+    const scoreEntry = {
+      score: score,
+      total: totalQuestions,
+      date: date.toLocaleDateString(),
+      time: date.toLocaleTimeString(),
+    };
+
+    const savedScores = JSON.parse(localStorage.getItem("honmenScores")) || {
+      setA: [],
+      setB: [],
+      setC: [],
+      setD: [],
+      illustrations: [],
+    };
+    savedScores.illustrations.unshift(scoreEntry); // Add new score to the beginning of the array
+    localStorage.setItem("honmenScores", JSON.stringify(savedScores));
   };
 
   const handleAnswer = (isCorrect, userResponse) => {
-    setUserAnswers([...userAnswers, userResponse]); // Store user response
+    setUserAnswers([...userAnswers, userResponse]);
 
     if (isCorrect) {
       setScore(score + 1);
     }
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1); // Move to the next question
+      setCurrentIndex(currentIndex + 1);
     } else {
-      setIsQuizComplete(true); // End the quiz
+      setIsQuizComplete(true);
+      saveScore(score + (isCorrect ? 1 : 0), questions.length); // Save the score
     }
   };
 
@@ -50,9 +71,9 @@ const Illustrations = () => {
           Your Score: <strong>{score} / {questions.length}</strong>
         </p>
         <h2
-          className={score >= (questions.length * 0.9) ? "text-success text-center" : "text-danger text-center"}
+          className={score >= questions.length * 0.9 ? "text-success text-center" : "text-danger text-center"}
         >
-          {score >= (questions.length * 0.9) ? "PASS" : "FAIL"}
+          {score >= questions.length * 0.9 ? "PASS" : "FAIL"}
         </h2>
         <h3 className="mt-4" style={{ fontFamily: "'Roboto', sans-serif" }}>Review Your Mistakes</h3>
         {questions.map((question, index) => {
@@ -69,12 +90,11 @@ const Illustrations = () => {
               <p>{question.question}</p>
               {question.image && (
                 <img
-                src={`${process.env.PUBLIC_URL}/karimenimg/${question.image}`}
-  alt="Question"
-  className="img-fluid mb-3"
-  style={{ maxHeight: "200px", borderRadius: "10px" }}
-/>
-
+                  src={`${process.env.PUBLIC_URL}/karimenimg/${question.image}`}
+                  alt="Question"
+                  className="img-fluid mb-3"
+                  style={{ maxHeight: "200px", borderRadius: "10px" }}
+                />
               )}
               {question.options.map((option, idx) => (
                 <div
@@ -103,7 +123,6 @@ const Illustrations = () => {
     <div>
       <Navbar />
       <div className="container mt-5 p-5 rounded shadow" style={{ backgroundColor: "#ffffff" }}>
-        {/* Added heading and subheading */}
         <h1 className="text-center mb-4 text-secondary" style={{ fontFamily: "'Poppins', sans-serif" }}>
           Illustrations Quiz
         </h1>
@@ -114,7 +133,6 @@ const Illustrations = () => {
           Showing Random 5 Questions
         </p>
 
-        {/* Quiz Content */}
         {isQuizComplete ? (
           renderResults()
         ) : (
@@ -122,9 +140,7 @@ const Illustrations = () => {
             <div className="card p-4 shadow mt-4" style={{ minHeight: "400px" }}>
               <IllustrationQuestion
                 question={questions[currentIndex]}
-                onAnswer={(isCorrect, userResponse) =>
-                  handleAnswer(isCorrect, userResponse)
-                }
+                onAnswer={(isCorrect, userResponse) => handleAnswer(isCorrect, userResponse)}
               />
             </div>
           )

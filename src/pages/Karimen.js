@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Question from "../components/Question";
 import ProgressBar from "../components/ProgressBar";
-import { FaLightbulb, FaBookOpen, FaCheck, FaTrafficLight } from "react-icons/fa";
+import { FaLightbulb, FaBookOpen, FaCheck, FaTrafficLight, FaTrash, FaRedo } from "react-icons/fa";
 
 const Karimen = () => {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -12,6 +12,13 @@ const Karimen = () => {
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
   const [quizMode, setQuizMode] = useState(null); // 'random' or 'all'
+  const [previousScores, setPreviousScores] = useState([]);
+
+  // Load previous scores from localStorage on component mount
+  useEffect(() => {
+    const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
+    setPreviousScores(scores);
+  }, []);
 
   // Function to dynamically load the karimen.js file
   const loadKarimenData = async () => {
@@ -64,7 +71,37 @@ const Karimen = () => {
       setCurrentIndex(currentIndex + 1);
     } else {
       setIsQuizComplete(true);
+      saveScoreToLocalStorage(score, questions.length);
     }
+  };
+
+  const saveScoreToLocalStorage = (score, totalQuestions) => {
+    const date = new Date();
+    const scoreEntry = {
+      score: score,
+      totalQuestions: totalQuestions,
+      date: date.toLocaleDateString(),
+      time: date.toLocaleTimeString(),
+    };
+
+    const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
+    scores.unshift(scoreEntry); // Add new score to the beginning of the array
+    const updatedScores = scores.slice(0, 10); // Keep only the last 10 scores
+    localStorage.setItem('quizScores', JSON.stringify(updatedScores));
+    setPreviousScores(updatedScores);
+  };
+
+  const resetScores = () => {
+    localStorage.removeItem('quizScores');
+    setPreviousScores([]);
+  };
+
+  const retakeTest = () => {
+    setQuizStarted(false);
+    setIsQuizComplete(false);
+    setScore(0);
+    setCurrentIndex(0);
+    setUserAnswers([]);
   };
 
   const renderResults = () => {
@@ -97,7 +134,7 @@ const Karimen = () => {
               <p>{question.question}</p>
               {question.image && question.image.trim() !== "" ? ( // Check if image exists and is not empty
                 <img
-                  src={`${process.env.PUBLIC_URL}/karimenimg/${question.image}`}
+                src={`${process.env.PUBLIC_URL}/${question.image}`}
                   alt="Question"
                   className="img-fluid mb-3"
                   style={{ maxHeight: "200px", borderRadius: "10px" }}
@@ -134,6 +171,16 @@ const Karimen = () => {
             </div>
           );
         })}
+
+        {/* Retake Test Button */}
+        <div className="text-center mt-4">
+          <button
+            className="btn btn-primary btn-lg"
+            onClick={retakeTest}
+          >
+            <FaRedo className="me-2" /> Retake Test
+          </button>
+        </div>
       </div>
     );
   };
@@ -176,6 +223,34 @@ const Karimen = () => {
             >
               Attempt All Questions (Some Question might be repeated)
             </button>
+
+            {/* Score Records Section */}
+            {previousScores.length > 0 && (
+              <div className="mt-5 p-4 rounded shadow" style={{ backgroundColor: "#f8f9fa", border: "1px solid #ddd" }}>
+                <h3 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                  <FaBookOpen className="me-2" /> Previous Scores
+                </h3>
+                <ul className="list-group">
+                  {previousScores.map((entry, index) => (
+                    <li
+                      key={index}
+                      className="list-group-item d-flex justify-content-between align-items-center"
+                      style={{ fontFamily: "'Roboto', sans-serif" }}
+                    >
+                      <span>
+                        Score: <strong>{entry.score}/{entry.totalQuestions}</strong> - {entry.date} {entry.time}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  className="btn btn-danger mt-3"
+                  onClick={resetScores}
+                >
+                  <FaTrash className="me-2" /> Reset Scores
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <>

@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-import { FaClipboardList, FaClipboard, FaChartLine, FaAward, FaCheckCircle } from "react-icons/fa";
+import { FaClipboardList, FaClipboard, FaChartLine, FaAward, FaCheckCircle, FaTrash } from "react-icons/fa";
 
 const Honmen = () => {
+  const [scores, setScores] = useState({
+    setA: [],
+    setB: [],
+    setC: [],
+    setD: [],
+    illustrations: [],
+  });
+
+  // Load scores from localStorage on component mount
+  useEffect(() => {
+    const savedScores = JSON.parse(localStorage.getItem("honmenScores")) || {
+      setA: [],
+      setB: [],
+      setC: [],
+      setD: [],
+      illustrations: [],
+    };
+    setScores(savedScores);
+  }, []);
+
+  // Function to reset scores for a specific set
+  const resetScores = (setName) => {
+    const updatedScores = { ...scores, [setName]: [] };
+    localStorage.setItem("honmenScores", JSON.stringify(updatedScores));
+    setScores(updatedScores);
+  };
+
   return (
     <div>
       <Navbar />
@@ -56,8 +83,146 @@ const Honmen = () => {
           </div>
         </div>
 
+        {/* Scores Section */}
+        <div className="mt-5 p-4 rounded shadow" style={{ backgroundColor: "#f8f9fa", border: "1px solid #ddd" }}>
+          <h2 className="text-center mb-4 text-primary" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <FaClipboardList className="me-2" /> Quiz Score Log
+          </h2>
+          <div className="row">
+            {/* Set A Scores */}
+            <div className="col-md-2 col-sm-4 mb-4">
+              <div className="card h-100 shadow-sm">
+                <div className="card-header bg-primary text-white">
+                  <h5 className="card-title mb-0" style={{ fontSize: "14px" }}>Set A</h5>
+                </div>
+                <div className="card-body">
+                  <ul className="list-group list-group-flush">
+                    {scores.setA.map((score, index) => (
+                      <li key={index} className="list-group-item" style={{ fontSize: "12px" }}>
+                        <strong>{score.score}/{score.total}</strong> - {score.date} {score.time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-footer">
+                  <button
+                    className="btn btn-danger btn-sm w-100"
+                    onClick={() => resetScores("setA")}
+                  >
+                    <FaTrash className="me-1" /> Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Set B Scores */}
+            <div className="col-md-2 col-sm-4 mb-4">
+              <div className="card h-100 shadow-sm">
+                <div className="card-header bg-success text-white">
+                  <h5 className="card-title mb-0" style={{ fontSize: "14px" }}>Set B</h5>
+                </div>
+                <div className="card-body">
+                  <ul className="list-group list-group-flush">
+                    {scores.setB.map((score, index) => (
+                      <li key={index} className="list-group-item" style={{ fontSize: "12px" }}>
+                        <strong>{score.score}/{score.total}</strong> - {score.date} {score.time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-footer">
+                  <button
+                    className="btn btn-danger btn-sm w-100"
+                    onClick={() => resetScores("setB")}
+                  >
+                    <FaTrash className="me-1" /> Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Set C Scores */}
+            <div className="col-md-2 col-sm-4 mb-4">
+              <div className="card h-100 shadow-sm">
+                <div className="card-header bg-warning text-white">
+                  <h5 className="card-title mb-0" style={{ fontSize: "14px" }}>Set C</h5>
+                </div>
+                <div className="card-body">
+                  <ul className="list-group list-group-flush">
+                    {scores.setC.map((score, index) => (
+                      <li key={index} className="list-group-item" style={{ fontSize: "12px" }}>
+                        <strong>{score.score}/{score.total}</strong> - {score.date} {score.time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-footer">
+                  <button
+                    className="btn btn-danger btn-sm w-100"
+                    onClick={() => resetScores("setC")}
+                  >
+                    <FaTrash className="me-1" /> Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Set D Scores */}
+            <div className="col-md-2 col-sm-4 mb-4">
+              <div className="card h-100 shadow-sm">
+                <div className="card-header bg-danger text-white">
+                  <h5 className="card-title mb-0" style={{ fontSize: "14px" }}>Set D</h5>
+                </div>
+                <div className="card-body">
+                  <ul className="list-group list-group-flush">
+                    {scores.setD.map((score, index) => (
+                      <li key={index} className="list-group-item" style={{ fontSize: "12px" }}>
+                        <strong>{score.score}/{score.total}</strong> - {score.date} {score.time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-footer">
+                  <button
+                    className="btn btn-danger btn-sm w-100"
+                    onClick={() => resetScores("setD")}
+                  >
+                    <FaTrash className="me-1" /> Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Illustrations Scores */}
+            <div className="col-md-2 col-sm-4 mb-4">
+              <div className="card h-100 shadow-sm">
+                <div className="card-header bg-secondary text-white">
+                  <h5 className="card-title mb-0" style={{ fontSize: "14px" }}>Illustrations</h5>
+                </div>
+                <div className="card-body">
+                  <ul className="list-group list-group-flush">
+                    {scores.illustrations.map((score, index) => (
+                      <li key={index} className="list-group-item" style={{ fontSize: "12px" }}>
+                        <strong>{score.score}/{score.total}</strong> - {score.date} {score.time}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="card-footer">
+                  <button
+                    className="btn btn-danger btn-sm w-100"
+                    onClick={() => resetScores("illustrations")}
+                  >
+                    <FaTrash className="me-1" /> Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Scoring System Section */}
-        <div className="scoring-system p-4 rounded shadow" style={{ backgroundColor: "#f9f9f9" }}>
+        <div className="scoring-system p-4 rounded shadow mt-5" style={{ backgroundColor: "#f9f9f9" }}>
           <h2 className="text-center mb-4 text-primary" style={{ fontFamily: "'Poppins', sans-serif" }}>
             Scoring System
           </h2>
