@@ -11,6 +11,7 @@ const Karimen = () => {
   const [score, setScore] = useState(0);
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
+  const [quizMode, setQuizMode] = useState(null); // 'random' or 'all'
 
   // Function to dynamically load the karimen.js file
   const loadKarimenData = async () => {
@@ -32,12 +33,24 @@ const Karimen = () => {
     });
   };
 
-  // Initialize the quiz
-  const startQuiz = async () => {
-    const questionsData = await loadKarimenData();
-    const shuffled = [...questionsData].sort(() => Math.random() - 0.5);
-    setQuestions(shuffled.slice(0, 50)); // Pick 50 random questions
-    setQuizStarted(true);
+  // Initialize the quiz based on the selected mode
+  const startQuiz = async (mode) => {
+    try {
+      const questionsData = await loadKarimenData();
+      let selectedQuestions;
+
+      if (mode === 'random') {
+        selectedQuestions = [...questionsData].sort(() => Math.random() - 0.5).slice(0, 50); // Pick 50 random questions
+      } else if (mode === 'all') {
+        selectedQuestions = questionsData; // Use all questions
+      }
+
+      setQuestions(selectedQuestions);
+      setQuizStarted(true);
+      setQuizMode(mode);
+    } catch (error) {
+      console.error("Error loading quiz data:", error);
+    }
   };
 
   const handleAnswer = (isCorrect, userResponse) => {
@@ -135,7 +148,7 @@ const Karimen = () => {
               Karimen Test | 仮免許
             </h1>
             <p className="mb-3 text-secondary" style={{ fontSize: "18px" }}>
-              Pass Marks: 45 | Total Questions: 50
+              Pass Marks: 45 | Total Questions: {quizMode === 'random' ? 50 : 'All'}
             </p>
             <div
               className="p-4 mb-4 rounded shadow"
@@ -151,8 +164,17 @@ const Karimen = () => {
               </ul>
               <p className="mt-3 text-secondary">Good luck on your Karimen test! You can do this!</p>
             </div>
-            <button className="btn btn-primary btn-lg shadow" onClick={startQuiz}>
-              Start Quiz
+            <button
+              className="btn btn-primary btn-lg shadow"
+              onClick={() => startQuiz('random')}
+            >
+              Start Quiz (Random 50 Questions)
+            </button>
+            <button
+              className="btn btn-secondary btn-lg shadow ms-3"
+              onClick={() => startQuiz('all')}
+            >
+              Attempt All Questions (Some Question might be repeated)
             </button>
           </div>
         ) : (
