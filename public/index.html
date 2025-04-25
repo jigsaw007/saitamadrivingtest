@@ -99,10 +99,11 @@
           const bmc = document.querySelector('.bmc-btn-container');
           if (bmc) {
             bmc.style.position = 'fixed';
-            bmc.style.left = '20px';
-            bmc.style.top = '50%';
-            bmc.style.transform = 'translateY(-50%)';
+            bmc.style.top = '20px';
+            bmc.style.right = '20px';
             bmc.style.zIndex = '9999';
+            bmc.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            bmc.style.borderRadius = '8px';
             clearInterval(interval);
           }
         }, 100);
