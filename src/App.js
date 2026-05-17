@@ -16,6 +16,7 @@ import RoadSigns from "./pages/RoadSigns";
 import RoadSafetyAndDriving from "./pages/RoadSafetyAndDriving";
 import DrivingTestVocabulary from "./pages/DrivingTestVocabulary";
 import EmergencyGuide from "./pages/EmergencyGuide";
+import PaymentSuccess from "./PaymentSuccess";
 
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/road-safety-and-driving" element={<RoadSafetyAndDriving />} />
         <Route path="/driving-test-vocabulary" element={<DrivingTestVocabulary />} /> 
-        <Route path="/emergency-guide" element={<EmergencyGuide />} />    
+        <Route path="/emergency-guide" element={<EmergencyGuide />} />  
+        <Route path="/payment-success" element={<PaymentSuccess />} />  
 
       </Routes>
     </Router>

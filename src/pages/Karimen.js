@@ -3,6 +3,9 @@ import Navbar from "../components/Navbar";
 import Question from "../components/Question";
 import ProgressBar from "../components/ProgressBar";
 import { FaLightbulb, FaBookOpen, FaCheck, FaTrafficLight, FaTrash, FaRedo } from "react-icons/fa";
+import Paywall from "../components/Paywall";
+import { FREE_QUESTION_COUNT } from "../config/premium";
+import { isPremiumUser } from "../utils/premium";
 
 const Karimen = () => {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -46,7 +49,11 @@ const Karimen = () => {
       const questionsData = await loadKarimenData();
       let selectedQuestions;
 
-      if (mode === 'random') {
+      const hasPremium = isPremiumUser();
+
+      if (!hasPremium) {
+        selectedQuestions = questionsData.slice(0, FREE_QUESTION_COUNT);
+      } else if (mode === 'random') {
         selectedQuestions = [...questionsData].sort(() => Math.random() - 0.5).slice(0, 50); // Pick 50 random questions
       } else if (mode === 'all') {
         selectedQuestions = questionsData; // Use all questions
@@ -221,8 +228,12 @@ const Karimen = () => {
               className="btn btn-secondary btn-lg shadow ms-3"
               onClick={() => startQuiz('all')}
             >
-              Attempt All Questions (Some Question might be repeated)
+              Attempt All Questions (Premium)
             </button>
+
+            {!isPremiumUser() && (
+              <Paywall title="Unlock all Karimen questions" />
+            )}
 
             {/* Score Records Section */}
             {previousScores.length > 0 && (

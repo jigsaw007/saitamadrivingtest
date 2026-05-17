@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Question from "../components/Question";
 import ProgressBar from "../components/ProgressBar";
+import Paywall from "../components/Paywall";
+import { FREE_QUESTION_COUNT } from "../config/premium";
+import { isPremiumUser } from "../utils/premium";
 
 const SetD = () => {
   const [questions, setQuestions] = useState([]);
@@ -14,7 +17,8 @@ const SetD = () => {
     fetch(`${process.env.PUBLIC_URL}/data/setD.json`)
       .then((response) => response.json())
       .then((data) => {
-        const shuffledQuestions = data.sort(() => Math.random() - 0.5);
+        const selectedQuestions = isPremiumUser() ? data : data.slice(0, FREE_QUESTION_COUNT);
+        const shuffledQuestions = selectedQuestions.sort(() => Math.random() - 0.5);
         setQuestions(shuffledQuestions);
       });
   }, []);
@@ -116,6 +120,9 @@ const SetD = () => {
         <p className="text-center mb-4" style={{ fontSize: "18px", fontFamily: "'Roboto', sans-serif" }}>
           Test your knowledge with the Set D Quiz. Answer all questions and aim for the highest score!
         </p>
+        {!isPremiumUser() && (
+          <Paywall title="Unlock full Set D quiz" />
+        )}
         <ProgressBar currentIndex={currentIndex} totalQuestions={questions.length} />
         {isQuizComplete ? (
           renderResults()
