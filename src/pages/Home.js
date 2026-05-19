@@ -20,6 +20,9 @@ import {
   FaIdCard,
   FaQuestionCircle,
   FaClipboardCheck,
+  FaStar,
+  FaQuoteLeft,
+  FaTrophy,
 } from "react-icons/fa";
 
 const Home = () => {
@@ -61,12 +64,14 @@ const Home = () => {
           </p>
         </div>
 
+
+
         {/* Main Navigation Section */}
         <div className="row justify-content-center">
           <div className="col-md-4 d-flex justify-content-center mb-4" onClick={() => handleNavigate("/karimen")}>
             <div
               className="card shadow-sm text-center p-4 hover-card"
-              style={{ cursor: "pointer", backgroundColor: "#ffffff", borderRadius: "10px", transition: "transform 0.2s" }}
+              style={{ cursor: "pointer", backgroundColor: "#eef6ff", border: "1px solid #cfe5ff", borderRadius: "10px", transition: "transform 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
               onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
             >
@@ -76,12 +81,15 @@ const Home = () => {
                 Prepare for the Karimen quiz and sharpen your basic skills. <br />
                 仮免許テストで基本的な運転スキルを向上させましょう。
               </p>
+              <p className="mb-0 fw-semibold" style={{ fontSize: "13px", color: "#0d6efd" }}>
+                Click to get started
+              </p>
             </div>
           </div>
           <div className="col-md-4 d-flex justify-content-center mb-4" onClick={() => handleNavigate("/honmen")}>
             <div
               className="card shadow-sm text-center p-4 hover-card"
-              style={{ cursor: "pointer", backgroundColor: "#ffffff", borderRadius: "10px", transition: "transform 0.2s" }}
+              style={{ cursor: "pointer", backgroundColor: "#fff1f1", border: "1px solid #ffd6d6", borderRadius: "10px", transition: "transform 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
               onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
             >
@@ -91,6 +99,82 @@ const Home = () => {
                 Challenge yourself with the Honmen quiz to test your knowledge. <br />
                 本免許テストで交通規則と道路マナーを学びましょう。
               </p>
+              <p className="mb-0 fw-semibold" style={{ fontSize: "13px", color: "#dc3545" }}>
+                Click to get started
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <p className="text-center mx-auto mb-5" style={{ maxWidth: "620px", fontSize: "14px", color: "#666", lineHeight: "1.6" }}>
+          Start with 5 free questions. Unlock full access to practice all questions and improve your success rate.
+        </p>
+
+        {/* Success Rate and Reviews Section */}
+        <div
+          className="mt-5 mb-5 p-4 rounded shadow-sm"
+          style={{ backgroundColor: "#ffffff", border: "1px solid #d8f3dc" }}
+        >
+          <div className="row align-items-center">
+            <div className="col-lg-4 text-center mb-4 mb-lg-0">
+              <div
+                className="mx-auto d-flex align-items-center justify-content-center mb-3"
+                style={{
+                  width: "96px",
+                  height: "96px",
+                  borderRadius: "50%",
+                  backgroundColor: "#e8f5e9",
+                  border: "2px solid #c8e6c9",
+                }}
+              >
+                <FaTrophy size={42} className="text-success" />
+              </div>
+              <h2 className="mb-1 text-success" style={{ fontFamily: "'Poppins', sans-serif", fontSize: "48px", fontWeight: "700" }}>
+                99%
+              </h2>
+              <h4 style={{ fontFamily: "'Poppins', sans-serif", color: "#2c3e50" }}>Success Rate</h4>
+              <p style={{ fontSize: "15px", color: "#555" }}>
+                Learners are using these quizzes and guides to prepare with confidence for Karimen and Honmen.
+              </p>
+            </div>
+
+            <div className="col-lg-8">
+              <h4 className="mb-4" style={{ fontFamily: "'Poppins', sans-serif", color: "#2c3e50" }}>
+                <FaStar className="me-2 text-warning" /> Reviews from Recent Supporters
+              </h4>
+              <div className="row">
+                {[
+                  {
+                    name: "Joshua",
+                    comment: "Thanks for making this great site. Helped a ton when studying for the karimen and honmen. Cheers and have a good one.",
+                  },
+                  {
+                    name: "Anon",
+                    comment: "Thank you so much. Please keep this up in 2026. You are providing real social help for people who really need it. I appreciate you.",
+                  },
+                  {
+                    name: "muvo",
+                    comment: "I passed the karimen test thank you.",
+                  },
+                ].map((review, index) => (
+                  <div className="col-md-4 mb-3" key={index}>
+                    <div
+                      className="h-100 p-3 rounded shadow-sm"
+                      style={{ backgroundColor: "#f8fbff", border: "1px solid #e3ecff" }}
+                    >
+                      <FaQuoteLeft className="text-primary mb-2" />
+                      <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.6" }}>"{review.comment}"</p>
+                      <div className="d-flex align-items-center justify-content-between mt-3">
+                        <strong style={{ color: "#2c3e50" }}>{review.name}</strong>
+                        <span className="text-warning">
+                          <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
