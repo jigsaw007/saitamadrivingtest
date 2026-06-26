@@ -1,5 +1,5 @@
 export const FREE_QUESTION_COUNT = 5;
-export const PREMIUM_PRICE_LABEL = "¥1500";
+export const PREMIUM_PRICE_LABEL = "¥2000";
 
 // Create a Stripe Payment Link in your Stripe dashboard and add it to .env as:
 // REACT_APP_STRIPE_PAYMENT_LINK=https://buy.stripe.com/your_payment_link
