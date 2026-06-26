@@ -56,7 +56,7 @@ const Paywall = ({ title = "Unlock Premium", className = "" }) => {
         onClick={handleUpgrade}
         disabled={loading}
       >
-        {loading ? "Loading..." : `Upgrade for ${PREMIUM_PRICE_LABEL}`}
+        {loading ? "Loading..." : `Upgrade for ${PREMIUM_PRICE_LABEL}(One time Payment)`}
       </button>
 
       {error && (
