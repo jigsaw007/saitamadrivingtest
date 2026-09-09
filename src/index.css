@@ -14,3 +14,102 @@ h1, h2 {
 button {
   border-radius: 5px;
 }
+
+/* Site-wide content and trust-page styles */
+.site-navbar {
+  background: #1f5f99;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.site-navbar .nav-link,
+.site-navbar .navbar-brand {
+  color: #fff;
+}
+
+.site-navbar .btn.nav-link {
+  border: 0;
+  text-decoration: none;
+}
+
+.content-page {
+  max-width: 920px;
+  line-height: 1.75;
+}
+
+.content-page h1 {
+  color: #1f3550;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.content-page h2 {
+  color: #234f78;
+  font-size: 1.45rem;
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+}
+
+.info-card,
+.notice-box {
+  background: #f7fbff;
+  border: 1px solid #d7e8f7;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.notice-box {
+  border-left: 4px solid #1f5f99;
+}
+
+.official-links {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.resource-card {
+  display: block;
+  height: 100%;
+  padding: 1.2rem;
+  border: 1px solid #dde7f0;
+  border-radius: 12px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(31, 95, 153, .12);
+}
+
+.resource-card h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.site-footer {
+  background: #102b43;
+  color: #eaf3fb;
+}
+
+.site-footer a {
+  color: #d7ebff;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .content-page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

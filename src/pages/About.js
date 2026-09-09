@@ -1,109 +1,37 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { FaRoad, FaCar, FaBook, FaCheckCircle, FaUsers, FaChartLine, FaHandsHelping } from "react-icons/fa"; // Importing icons
 
-const About = () => {
+export default function About() {
   return (
-    <div>
-      <Navbar />
-      <div className="container mt-5 p-5 rounded shadow" style={{ backgroundColor: "#ffffff" }}>
-        <h1 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
-          <FaCar className="me-2 text-primary" /> About Saitama Driving License Test
-        </h1>
-        <p className="text-center mb-5" style={{ fontSize: "18px", fontFamily: "'Roboto', sans-serif" }}>
-          Learn more about the two stages of the Saitama Driving License Test: <strong>仮免許 (Karimen)</strong> and <strong>本免許 (Honmen)</strong>.
-        </p>
+    <div><Navbar /><main className="container content-page mt-5">
+      <h1>About Saitama Driving Test</h1>
+      <p className="lead">Saitama Driving Test is an independent study website built to make Japanese driving-test terminology and road rules easier to practice in English.</p>
 
-        {/* Web Application Overview Section */}
-        <section className="mb-5">
-          <h2 className="text-primary" style={{ fontFamily: "'Poppins', sans-serif'" }}>
-            <FaUsers className="me-2 text-info" /> About This Web Application
-          </h2>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            This web application is designed to assist aspiring drivers in Saitama, Japan, to prepare effectively for both stages of the driving license test. Whether you are a beginner or looking to refine your driving skills, our platform offers comprehensive resources and tools to help you succeed.
-          </p>
-          <div className="text-center my-4">
-            <FaChartLine className="text-info" size={80} />
-          </div>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            <strong>Key Features:</strong>
-            <ul>
-              <li><FaCheckCircle className="text-success me-2" /> Interactive practice tests for both the written and practical exams.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Detailed explanations of traffic rules and driving techniques.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Real-world driving scenarios to enhance hazard perception skills.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Progress tracking to monitor your improvement over time.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Expert tips and advice from certified driving instructors.</li>
-            </ul>
-          </p>
-        </section>
+      <h2>Why this site exists</h2>
+      <p>Driving-test preparation can be difficult when the rules, signs and exam vocabulary are unfamiliar. This project combines practice quizzes with plain-language study pages so learners can review mistakes instead of only memorising answers.</p>
 
-        {/* 仮免 (Karimen) Section */}
-        <section className="mb-5">
-          <h2 className="text-primary" style={{ fontFamily: "'Poppins', sans-serif'" }}>
-            <FaBook className="me-2 text-success" /> 仮免許 (Karimen)
-          </h2>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            The provisional license test, known as 仮免許 (Karimen), is the first step in the Japanese driving license process. It allows learners to practice driving under supervision on specially designed courses. This stage focuses on mastering basic driving maneuvers and understanding essential traffic rules.
-          </p>
-          <div className="text-center my-4">
-            <FaCar className="text-primary" size={80} />
-          </div>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            <strong>Test Details:</strong>
-            <ul>
-              <li><FaCheckCircle className="text-success me-2" /> Written test to evaluate knowledge of basic traffic laws.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Practical driving test conducted on a closed course to assess basic maneuvers, including starting, stopping, turning, and parking.</li>
-              <li><FaCheckCircle className="text-success me-2" /> The course includes challenges such as narrow roads, T-junctions, and figure-eight turns.</li>
-            </ul>
-          </p>
-        </section>
+      <h2>What you can use here</h2>
+      <ul>
+        <li>Karimen and Honmen theory-practice quizzes.</li>
+        <li>Road-sign and illustration practice.</li>
+        <li>Japanese driving vocabulary with English explanations.</li>
+        <li>Road-safety, emergency and test-preparation guides.</li>
+        <li>Saitama-specific links that point users to current official licence information.</li>
+      </ul>
 
-        {/* 本免許 (Honmen) Section */}
-        <section className="mb-5">
-          <h2 className="text-primary" style={{ fontFamily: "'Poppins', sans-serif'" }}>
-            <FaCar className="me-2 text-danger" /> 本免許 (Honmen)
-          </h2>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            The final driving license test, known as 本免許 (Honmen), is the culmination of the driving license process. After obtaining the provisional license (仮免許), learners must gain sufficient real-world driving experience to qualify for this stage. This test assesses advanced driving skills and the ability to safely navigate real-world traffic scenarios.
-          </p>
-          <div className="text-center my-4">
-            <FaRoad className="text-warning" size={80} />
-          </div>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            <strong>Test Details:</strong>
-            <ul>
-              <li><FaCheckCircle className="text-success me-2" /> Written test covering advanced traffic laws and scenarios.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Practical driving test conducted on public roads to evaluate safe driving skills, including lane changes, merging, and roundabout navigation.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Special attention is given to hazard perception and adherence to traffic laws.</li>
-            </ul>
-          </p>
-        </section>
+      <h2>How the material is positioned</h2>
+      <p>The questions and guides are independent study material. They are not official exam questions, and this website is not a government service or driving school. Where procedures or rules can change, we prefer links to Saitama Prefectural Police, the National Police Agency and other authoritative sources.</p>
 
-        {/* Benefits of Using the Web Application Section */}
-        <section className="mb-5">
-          <h2 className="text-primary" style={{ fontFamily: "'Poppins', sans-serif'" }}>
-            <FaHandsHelping className="me-2 text-warning" /> Benefits of Using This Web Application
-          </h2>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            Our web application is tailored to provide a seamless and effective learning experience for all users. Here are some of the key benefits you can expect:
-          </p>
-          <div className="text-center my-4">
-            <FaHandsHelping className="text-warning" size={80} />
-          </div>
-          <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-            <strong>Benefits:</strong>
-            <ul>
-              <li><FaCheckCircle className="text-success me-2" /> Access to a wide range of practice questions and driving scenarios.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Personalized learning paths based on your progress and performance.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Instant feedback on practice tests to help you identify areas for improvement.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Mobile-friendly design for learning on the go.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Community support and forums to connect with other learners.</li>
-            </ul>
-          </p>
-        </section>
+      <h2>Who maintains it</h2>
+      <p>The project is maintained by the creator of Saitama Driving Test. Content corrections and technical issues can be reported publicly through the project's GitHub issue tracker. We do not claim that the material is reviewed by certified driving instructors unless a specific page explicitly identifies such a reviewer.</p>
+
+      <div className="d-flex flex-wrap gap-2 mt-4">
+        <Link className="btn btn-primary" to="/resources">Browse study resources</Link>
+        <Link className="btn btn-outline-primary" to="/editorial-policy">Editorial & Sources Policy</Link>
+        <Link className="btn btn-outline-secondary" to="/contact">Contact</Link>
       </div>
-    </div>
+      <p className="text-muted mt-4">About page reviewed: September 9, 2026.</p>
+    </main></div>
   );
-};
-
-export default About;
+}

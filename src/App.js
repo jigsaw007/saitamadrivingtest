@@ -1,6 +1,3 @@
-// src/App.js
-// Added: <AuthProvider> wraps everything, plus /login and /auth/callback routes.
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./hooks/useAuth";
@@ -21,14 +18,24 @@ import RoadSigns from "./pages/RoadSigns";
 import RoadSafetyAndDriving from "./pages/RoadSafetyAndDriving";
 import DrivingTestVocabulary from "./pages/DrivingTestVocabulary";
 import EmergencyGuide from "./pages/EmergencyGuide";
+import Resources from "./pages/Resources";
+import ForeignLicenseGuide from "./pages/ForeignLicenseGuide";
+import SaitamaLicenseCenter from "./pages/SaitamaLicenseCenter";
+import TestDayChecklist from "./pages/TestDayChecklist";
+import EditorialPolicy from "./pages/EditorialPolicy";
+import Disclaimer from "./pages/Disclaimer";
+import Contact from "./pages/Contact";
 import PaymentSuccess from "./PaymentSuccess";
 import Login from "./pages/Login";
 import AuthCallback from "./pages/AuthCallback";
+import SeoManager from "./components/SeoManager";
+import SiteFooter from "./components/SiteFooter";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <SeoManager />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -46,10 +53,18 @@ function App() {
           <Route path="/road-safety-and-driving" element={<RoadSafetyAndDriving />} />
           <Route path="/driving-test-vocabulary" element={<DrivingTestVocabulary />} />
           <Route path="/emergency-guide" element={<EmergencyGuide />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/foreign-license-guide" element={<ForeignLicenseGuide />} />
+          <Route path="/saitama-license-center" element={<SaitamaLicenseCenter />} />
+          <Route path="/test-day-checklist" element={<TestDayChecklist />} />
+          <Route path="/editorial-policy" element={<EditorialPolicy />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
         </Routes>
+        <SiteFooter />
       </Router>
     </AuthProvider>
   );

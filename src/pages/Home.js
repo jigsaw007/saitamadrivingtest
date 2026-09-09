@@ -46,7 +46,7 @@ const Home = () => {
           Saitama Driving Test | 埼玉県運転免許試験
         </h1>
         <p className="text-center mb-4" style={{ fontSize: "18px", fontFamily: "'Roboto', sans-serif", color: "#555" }}>
-          Your ultimate destination for preparing and excelling in driving tests. Whether you're a beginner or polishing your knowledge, we've got you covered! <br />
+          Independent practice quizzes and plain-English study resources for people learning Japanese road rules and preparing for driving theory tests. <br />
           埼玉運転免許試験で成功への一歩を踏み出しましょう！
         </p>
 
@@ -108,7 +108,7 @@ const Home = () => {
 
 
         <p className="text-center mx-auto mb-5" style={{ maxWidth: "620px", fontSize: "14px", color: "#666", lineHeight: "1.6" }}>
-          Start with 5 free questions. Unlock full access to practice all questions and improve your success rate.
+          Start with 5 free questions. Premium access unlocks the full practice library; use the study guides alongside quizzes to understand mistakes and build confidence.
         </p>
 
         {/* Success Rate and Reviews Section */}
@@ -131,11 +131,11 @@ const Home = () => {
                 <FaTrophy size={42} className="text-success" />
               </div>
               <h2 className="mb-1 text-success" style={{ fontFamily: "'Poppins', sans-serif", fontSize: "48px", fontWeight: "700" }}>
-                99%
+                5 FREE
               </h2>
-              <h4 style={{ fontFamily: "'Poppins', sans-serif", color: "#2c3e50" }}>Success Rate</h4>
+              <h4 style={{ fontFamily: "'Poppins', sans-serif", color: "#2c3e50" }}>Free Questions</h4>
               <p style={{ fontSize: "15px", color: "#555" }}>
-                Learners are using these quizzes and guides to prepare with confidence for Karimen and Honmen.
+                Try the first five questions before deciding whether you want full access to the complete practice sets.
               </p>
             </div>
 
@@ -302,7 +302,7 @@ const Home = () => {
               <FaBicycle className="me-2 text-primary" /> Cyclist Rules
             </h5>
             <p style={{ fontSize: "16px", color: "#555" }}>
-              For cyclists, there are specific rules to follow. While bicycles are considered vehicles, they are generally required to use sidewalks unless otherwise indicated. Cyclists must obey traffic signals and are advised to wear helmets for safety. Riding under the influence of alcohol is also prohibited for cyclists.
+              For cyclists, there are specific rules to follow. Bicycles are vehicles and, as a general rule, use the roadway on the left; sidewalk riding is limited to permitted situations and exceptions. Cyclists must obey traffic signals and are advised to wear helmets for safety. Riding under the influence of alcohol is also prohibited for cyclists.
             </p>
           </div>
 

@@ -3,82 +3,42 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg"
-      style={{
-        backgroundColor: "#86b7fe", // Set your desired color
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Add subtle shadow
-      }}
-    >
-      
+    <nav className="navbar navbar-expand-lg navbar-dark site-navbar">
       <div className="container">
-        <Link className="navbar-brand" to="/" style={{ color: "#fff" }}>
-          Home
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <Link className="navbar-brand fw-bold" to="/">Saitama Driving Test</Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-          <li className="nav-item">
-              <Link className="nav-link" to="/about" style={{ color: "#fff" }}>
-                About
-              </Link>
+          <ul className="navbar-nav ms-auto align-items-lg-center">
+            <li className="nav-item dropdown">
+              <button className="nav-link dropdown-toggle btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">Practice</button>
+              <ul className="dropdown-menu">
+                <li><Link className="dropdown-item" to="/karimen">Karimen</Link></li>
+                <li><Link className="dropdown-item" to="/honmen">Honmen</Link></li>
+                <li><Link className="dropdown-item" to="/illustrations">Illustrations</Link></li>
+              </ul>
             </li>
-          <li className="nav-item">
-              <Link className="nav-link" to="/honmen" style={{ color: "#fff" }}>
-                Honmen
-              </Link>
+            <li className="nav-item dropdown">
+              <button className="nav-link dropdown-toggle btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">Learn</button>
+              <ul className="dropdown-menu">
+                <li><Link className="dropdown-item" to="/resources">All Resources</Link></li>
+                <li><Link className="dropdown-item" to="/guide">Karimen & Honmen Guide</Link></li>
+                <li><Link className="dropdown-item" to="/road-signs">Road Signs</Link></li>
+                <li><Link className="dropdown-item" to="/driving-test-vocabulary">Vocabulary</Link></li>
+                <li><Link className="dropdown-item" to="/road-safety-and-driving">Road Safety</Link></li>
+                <li><Link className="dropdown-item" to="/emergency-guide">Emergency Guide</Link></li>
+              </ul>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/karimen" style={{ color: "#fff" }}>
-                Karimen
-              </Link>
+            <li className="nav-item dropdown">
+              <button className="nav-link dropdown-toggle btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">Saitama</button>
+              <ul className="dropdown-menu">
+                <li><Link className="dropdown-item" to="/foreign-license-guide">Foreign Licence Guide</Link></li>
+                <li><Link className="dropdown-item" to="/saitama-license-center">Licence Center Guide</Link></li>
+                <li><Link className="dropdown-item" to="/test-day-checklist">Test-day Checklist</Link></li>
+              </ul>
             </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/road-safety-and-driving" style={{ color: "#fff" }}>
-                Road Safety & Driving
-              </Link>
-            </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/road-signs" style={{ color: "#fff" }}>
-                Road Signs
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/emergency-guide" style={{ color: "#fff" }}>
-                Emergency Guide
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/guide" style={{ color: "#fff" }}>
-                Guide
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/terms" style={{ color: "#fff" }}>
-                Terms
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/privacy" style={{ color: "#fff" }}>
-                Privacy
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/driving-test-vocabulary" style={{ color: "#fff" }}> 
-                Gloassary
-              </Link>
-            </li>
+            <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
           </ul>
         </div>
       </div>
