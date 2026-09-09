@@ -49,8 +49,16 @@
       property="og:description"
       content="Practice Japanese driving theory in English with Karimen and Honmen quizzes, road-sign study, vocabulary, and learning guides."
     />
-    <meta property="og:url" content="https://saitamadrivingschool.com" />
-    <meta property="og:type" content="website" />
+
+    <meta
+      property="og:url"
+      content="https://saitamadrivingtest.com/"
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
 
     <meta
       property="og:site_name"
@@ -78,8 +86,22 @@
       content="%PUBLIC_URL%/twitter-image.png"
     />
 
-    <!-- Canonical Link -->
-    <link rel="canonical" href="https://saitamadrivingschool.com" />
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-26H8XCSFD8"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-26H8XCSFD8");
+    </script>
 
     <!-- Google Fonts -->
     <link
@@ -114,55 +136,77 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "EducationalApplication",
-        "name": "Saitama Driving School",
-        "description": "Prepare for the Saitama Driving License Test with quizzes for Karimen and Honmen levels, including traffic signs and road safety rules.",
-        "applicationCategory": "Educational",
-        "operatingSystem": "Web",
-        "url": "https://saitamadrivingschool.com",
-        "author": {
-          "@type": "Person",
-          "name": "Jigsaw"
-        },
-        "inLanguage": ["en", "ja"]
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Saitama Driving Test",
+            "url": "https://saitamadrivingtest.com/",
+            "description": "Independent Japanese driving-test practice quizzes and study resources.",
+            "inLanguage": ["en", "ja"]
+          },
+          {
+            "@type": "EducationalApplication",
+            "name": "Saitama Driving Test",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web",
+            "url": "https://saitamadrivingtest.com/",
+            "description": "Practice Karimen and Honmen theory questions and study Japanese road signs, vocabulary, and road safety.",
+            "isAccessibleForFree": true,
+            "author": {
+              "@type": "Organization",
+              "name": "Saitama Driving Test"
+            },
+            "inLanguage": ["en", "ja"]
+          }
+        ]
       }
     </script>
 
-    <!-- Additional Structured Data in Japanese -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "EducationalApplication",
-        "name": "埼玉運転免許学校",
-        "description": "埼玉運転免許試験の仮免許や本免許レベルのクイズで準備をしましょう。交通標識、道路安全、運転規則を学べます。",
-        "applicationCategory": "教育",
-        "operatingSystem": "ウェブ",
-        "url": "https://saitamadrivingschool.com",
-        "author": {
-          "@type": "Person",
-          "name": "ジグソー"
+    <!-- Buy Me a Coffee fixed position -->
+    <style>
+      #bmc-fixed-wrapper {
+        position: fixed !important;
+        top: 18px !important;
+        right: 18px !important;
+        left: auto !important;
+        bottom: auto !important;
+
+        z-index: 999999 !important;
+
+        width: auto !important;
+        height: auto !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: block !important;
+        line-height: normal !important;
+      }
+
+      #bmc-fixed-wrapper > * {
+        margin: 0 !important;
+      }
+
+      #bmc-fixed-wrapper .bmc-button-container,
+      #bmc-fixed-wrapper .bmc-btn-container {
+        position: static !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      @media (max-width: 768px) {
+        #bmc-fixed-wrapper {
+          top: auto !important;
+          right: 12px !important;
+          bottom: 12px !important;
+          left: auto !important;
         }
       }
-    </script>
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        const interval = setInterval(() => {
-          const bmc = document.querySelector('.bmc-btn-container');
-          if (bmc) {
-            bmc.style.position = 'fixed';
-            bmc.style.top = '20px';
-            bmc.style.right = '20px';
-            bmc.style.zIndex = '9999';
-            bmc.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
-            bmc.style.borderRadius = '8px';
-            clearInterval(interval);
-          }
-        }, 100);
-      });
-    </script>
-    
+    </style>
 
-    <title>Saitama Driving Test | 埼玉県運転免許試験</title>
+    <title>
+      Saitama Driving Test | Japanese Driving Test Practice
+    </title>
   </head>
 
   <body>
