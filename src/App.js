@@ -25,16 +25,22 @@ import TestDayChecklist from "./pages/TestDayChecklist";
 import EditorialPolicy from "./pages/EditorialPolicy";
 import Disclaimer from "./pages/Disclaimer";
 import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
+import StartHere from "./pages/StartHere";
+import Updates from "./pages/Updates";
+import NotFound from "./pages/NotFound";
 import PaymentSuccess from "./PaymentSuccess";
 import Login from "./pages/Login";
 import AuthCallback from "./pages/AuthCallback";
 import SeoManager from "./components/SeoManager";
 import SiteFooter from "./components/SiteFooter";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
+         <ScrollToTop />
         <SeoManager />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -60,9 +66,13 @@ function App() {
           <Route path="/editorial-policy" element={<EditorialPolicy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/start-here" element={<StartHere />} />
+          <Route path="/updates" element={<Updates />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <SiteFooter />
       </Router>

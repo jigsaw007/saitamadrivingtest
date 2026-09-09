@@ -1,5 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Breadcrumbs from "../components/Breadcrumbs";
+import SourceReview from "../components/SourceReview";
+import GuideCTA from "../components/GuideCTA";
 
 const DrivingTestVocabulary = () => {
   const drivingVocabulary = [
@@ -159,6 +162,7 @@ const DrivingTestVocabulary = () => {
     <div>
       <Navbar />
       <div className="container mt-5 p-5 rounded shadow" style={{ backgroundColor: "#ffffff" }}>
+        <Breadcrumbs items={[{ label: "Resources", to: "/resources" }, { label: "Driving Vocabulary" }]} />
         <h1 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
           Driving Test Vocabulary | 運転試験の語彙
         </h1>
@@ -186,6 +190,19 @@ const DrivingTestVocabulary = () => {
             </div>
           ))}
         </div>
+        <GuideCTA
+          title="Use the words in context"
+          links={[
+            { label: "Road signs", to: "/road-signs" },
+            { label: "Road safety", to: "/road-safety-and-driving" },
+            { label: "Start Here", to: "/start-here" }
+          ]}
+        />
+        <SourceReview
+          sources={[
+            { label: "JAF - Traffic Rules in Japan", href: "https://english.jaf.or.jp/driving-in-japan/traffic-rules" }
+          ]}
+        />
       </div>
     </div>
   );

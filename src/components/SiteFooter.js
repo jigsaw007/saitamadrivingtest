@@ -15,7 +15,9 @@ export default function SiteFooter() {
           <div className="col-6 col-md-3">
             <strong>Study</strong>
             <div className="d-flex flex-column gap-1 mt-2 small">
+              <Link to="/start-here">Start Here</Link>
               <Link to="/resources">Resources</Link>
+              <Link to="/faq">FAQ</Link>
               <Link to="/karimen">Karimen</Link>
               <Link to="/honmen">Honmen</Link>
               <Link to="/road-signs">Road Signs</Link>
@@ -30,6 +32,7 @@ export default function SiteFooter() {
               <Link to="/contact">Contact</Link>
               <Link to="/privacy">Privacy</Link>
               <Link to="/terms">Terms</Link>
+              <Link to="/updates">Site Updates</Link>
             </div>
           </div>
         </div>

@@ -113,3 +113,102 @@ button {
     padding-right: 1rem;
   }
 }
+
+/* Navigation and editorial improvements */
+.site-breadcrumb {
+  font-size: .92rem;
+}
+
+.site-breadcrumb a {
+  text-decoration: none;
+}
+
+.source-review {
+  background: #f7fafc;
+  border: 1px solid #dce6ef;
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+}
+
+.source-review a {
+  overflow-wrap: anywhere;
+}
+
+.guide-cta {
+  background: #eef6fd;
+  border: 1px solid #cfe3f5;
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.guide-cta h2 {
+  margin-top: 0;
+}
+
+.resource-search {
+  max-width: 620px;
+}
+
+.learning-path {
+  display: grid;
+  gap: 1rem;
+}
+
+.learning-step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 1rem;
+  align-items: start;
+  background: #fff;
+  border: 1px solid #dde7f0;
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.learning-step-number {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #1f5f99;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.learning-step h2 {
+  margin-top: 0;
+}
+
+.faq-accordion .accordion-button {
+  font-weight: 600;
+  border-radius: 0;
+}
+
+.not-found-page {
+  min-height: 48vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.resource-card:focus-visible,
+.site-navbar a:focus-visible,
+.site-footer a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .learning-step {
+    grid-template-columns: 42px 1fr;
+    padding: 1rem;
+  }
+
+  .learning-step-number {
+    width: 38px;
+    height: 38px;
+  }
+}

@@ -22,6 +22,42 @@ const seo = {
   "/contact": ["Contact | Saitama Driving Test", "Contact Saitama Driving Test to report a correction, technical issue or content concern."],
   "/privacy": ["Privacy Policy | Saitama Driving Test", "Privacy information for Saitama Driving Test, including analytics, authentication, payments and local browser storage."],
   "/terms": ["Terms of Use | Saitama Driving Test", "Terms governing use of Saitama Driving Test practice quizzes, study resources and premium access."],
+  "/faq": ["Japanese Driving Test FAQ | Saitama Driving Test", "Answers to common questions about Karimen, Honmen, English-language testing, foreign-licence conversion and studying Japanese road rules."],
+  "/start-here": ["Start Here: Japanese Driving Test Study Path", "A simple step-by-step study path for people preparing for Japanese driving theory tests or licence procedures in Saitama."],
+  "/updates": ["Site Updates | Saitama Driving Test", "A record of important content, source, navigation and site-quality updates to Saitama Driving Test."],
+};
+
+
+const breadcrumbLabels = {
+  "/about": "About",
+  "/guide": "Karimen & Honmen Guide",
+  "/road-signs": "Road Signs",
+  "/road-safety-and-driving": "Road Safety",
+  "/driving-test-vocabulary": "Driving Vocabulary",
+  "/emergency-guide": "Emergency Guide",
+  "/resources": "Resources",
+  "/foreign-license-guide": "Foreign Licence Guide",
+  "/saitama-license-center": "Saitama Licence Center",
+  "/test-day-checklist": "Test-day Checklist",
+  "/editorial-policy": "Editorial Policy",
+  "/disclaimer": "Disclaimer",
+  "/contact": "Contact",
+  "/privacy": "Privacy",
+  "/terms": "Terms",
+  "/faq": "FAQ",
+  "/start-here": "Start Here",
+  "/updates": "Site Updates"
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    ["What is the difference between Karimen and Honmen?", "Karimen refers to the provisional-licence stage, while Honmen refers to the full-licence stage. The exact examination route depends on how you are obtaining your licence."],
+    ["Can I take a Japanese driving test in English?", "Foreign-language availability varies by test, licence category and authority. Confirm the language offered for your specific procedure with the relevant police authority."],
+    ["Do I need a reservation at the Saitama licence center?", "Some procedures require advance reservations. Check the official Saitama Police page for your exact procedure before visiting."],
+    ["Are the questions on this website official exam questions?", "No. Saitama Driving Test is an independent study resource and its practice questions are not official examination questions."]
+  ].map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } }))
 };
 
 const NOINDEX = new Set(["/login", "/auth/callback", "/payment-success", "/setA", "/setB", "/setC", "/setD"]);
@@ -49,7 +85,9 @@ export default function SeoManager() {
 
     document.title = title;
     setMeta("description", description);
-    setMeta("robots", NOINDEX.has(pathname) ? "noindex, nofollow" : "index, follow");
+    const isKnown = Object.prototype.hasOwnProperty.call(seo, pathname);
+    const shouldNoIndex = NOINDEX.has(pathname) || !isKnown;
+    setMeta("robots", shouldNoIndex ? "noindex, nofollow" : "index, follow");
     setMeta("og:title", title, true);
     setMeta("og:description", description, true);
     setMeta("og:url", canonicalUrl, true);
@@ -63,6 +101,35 @@ export default function SeoManager() {
       document.head.appendChild(canonical);
     }
     canonical.href = canonicalUrl;
+
+    const existingStructured = document.getElementById("route-structured-data");
+    if (existingStructured) existingStructured.remove();
+
+    const graph = [];
+    if (breadcrumbLabels[pathname]) {
+      graph.push({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: breadcrumbLabels[pathname], item: canonicalUrl }
+        ]
+      });
+    }
+    if (pathname === "/faq") graph.push(faqJsonLd);
+
+    if (graph.length) {
+      const script = document.createElement("script");
+      script.id = "route-structured-data";
+      script.type = "application/ld+json";
+      script.text = JSON.stringify(graph.length === 1 ? graph[0] : { "@context": "https://schema.org", "@graph": graph.map(({ "@context": _context, ...item }) => item) });
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      const script = document.getElementById("route-structured-data");
+      if (script) script.remove();
+    };
   }, [pathname]);
 
   return null;

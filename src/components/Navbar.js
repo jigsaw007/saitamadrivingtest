@@ -22,7 +22,9 @@ const Navbar = () => {
             <li className="nav-item dropdown">
               <button className="nav-link dropdown-toggle btn btn-link" data-bs-toggle="dropdown" aria-expanded="false">Learn</button>
               <ul className="dropdown-menu">
+                <li><Link className="dropdown-item" to="/start-here">Start Here</Link></li>
                 <li><Link className="dropdown-item" to="/resources">All Resources</Link></li>
+                <li><Link className="dropdown-item" to="/faq">FAQ</Link></li>
                 <li><Link className="dropdown-item" to="/guide">Karimen & Honmen Guide</Link></li>
                 <li><Link className="dropdown-item" to="/road-signs">Road Signs</Link></li>
                 <li><Link className="dropdown-item" to="/driving-test-vocabulary">Vocabulary</Link></li>

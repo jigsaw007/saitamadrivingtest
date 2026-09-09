@@ -1,5 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Breadcrumbs from "../components/Breadcrumbs";
+import SourceReview from "../components/SourceReview";
+import GuideCTA from "../components/GuideCTA";
 
 const RoadSafetyAndDriving = () => {
   const safetyTips = [
@@ -218,6 +221,7 @@ const RoadSafetyAndDriving = () => {
     <div>
       <Navbar />
       <div className="container mt-5 p-5 rounded shadow" style={{ backgroundColor: "#ffffff" }}>
+        <Breadcrumbs items={[{ label: "Resources", to: "/resources" }, { label: "Road Safety" }]} />
         <h1 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
           Comprehensive Guide to Road Safety and Driving in Japan
         </h1>
@@ -304,6 +308,20 @@ const RoadSafetyAndDriving = () => {
             ))}
           </div>
         </section>
+        <GuideCTA
+          title="Continue studying"
+          links={[
+            { label: "Road signs", to: "/road-signs" },
+            { label: "Emergency guide", to: "/emergency-guide" },
+            { label: "Driving vocabulary", to: "/driving-test-vocabulary" }
+          ]}
+        />
+        <SourceReview
+          sources={[
+            { label: "JAF - Traffic Rules in Japan", href: "https://english.jaf.or.jp/driving-in-japan/traffic-rules" },
+            { label: "JAF - Driving a Motor Vehicle in Japan", href: "https://english.jaf.or.jp/safe-driving/traffic-rules-in-japan" }
+          ]}
+        />
       </div>
     </div>
   );

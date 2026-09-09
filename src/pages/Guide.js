@@ -1,5 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Breadcrumbs from "../components/Breadcrumbs";
+import SourceReview from "../components/SourceReview";
+import GuideCTA from "../components/GuideCTA";
 import { FaCar, FaBook, FaCheckCircle, FaClock, FaRoad, FaUserGraduate, FaQuestionCircle, FaExclamationTriangle } from "react-icons/fa"; // Importing icons
 
 const Guide = () => {
@@ -7,6 +10,7 @@ const Guide = () => {
     <div>
       <Navbar />
       <div className="container mt-5 p-5 rounded shadow" style={{ backgroundColor: "#ffffff" }}>
+        <Breadcrumbs items={[{ label: "Resources", to: "/resources" }, { label: "Karimen & Honmen Guide" }]} />
         <h1 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
           <FaCar className="me-2 text-primary" /> Guide to Obtain a Driving License in Saitama
         </h1>
@@ -30,7 +34,7 @@ const Guide = () => {
             <ul>
               <li><FaCheckCircle className="text-success me-2" /> Minimum age: 18 years.</li>
               <li><FaCheckCircle className="text-success me-2" /> Requirements differ depending on whether you attend a designated driving school or take another permitted licensing route; confirm the current official procedure.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Passing a vision and hearing test.</li>
+              <li><FaCheckCircle className="text-success me-2" /> Meeting the eyesight and other aptitude requirements for your procedure.</li>
             </ul>
           </p>
           <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
@@ -67,7 +71,7 @@ const Guide = () => {
             <ul>
               <li><FaCheckCircle className="text-success me-2" /> A valid provisional license (仮免許).</li>
               <li><FaCheckCircle className="text-success me-2" /> Complete any supervised road-practice requirements that apply to your licensing route, following the current official instructions.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Passing a vision and hearing test (if not already passed during Karimen).</li>
+              <li><FaCheckCircle className="text-success me-2" /> Meeting the applicable aptitude requirements for your procedure.</li>
             </ul>
           </p>
           <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
@@ -111,7 +115,7 @@ const Guide = () => {
           </p>
           <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
             <strong>Q: What happens if I fail the practical test?</strong><br />
-            <FaCheckCircle className="text-success me-2" /> A: You can retake the test, but you may need to wait for a specific period and pay a retest fee.
+            <FaCheckCircle className="text-success me-2" /> A: Retest procedures and fees depend on the test and licensing route. Check the current instructions from the relevant authority.
           </p>
         </section>
 
@@ -129,7 +133,7 @@ const Guide = () => {
           <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
             <ul>
               <li><FaCheckCircle className="text-success me-2" /> Ensure you have all required documents, including proof of identity and residency.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Choose a certified driving school that offers both theoretical and practical training.</li>
+              <li><FaCheckCircle className="text-success me-2" /> If you use a driving school, confirm that the school and course match the licensing route you intend to follow.</li>
               <li><FaCheckCircle className="text-success me-2" /> Be prepared for both the written and practical tests by studying and practicing regularly.</li>
             </ul>
           </p>
@@ -149,6 +153,21 @@ const Guide = () => {
             本免許は、最終的な運転免許であり、公共道路での安全運転能力を評価する試験です。仮免許の取得後、必要な運転経験を積むことが求められます。
           </p>
         </section>
+        <GuideCTA
+          title="Choose your next step"
+          links={[
+            { label: "Start Here", to: "/start-here" },
+            { label: "Road signs", to: "/road-signs" },
+            { label: "Test-day checklist", to: "/test-day-checklist" },
+            { label: "FAQ", to: "/faq" }
+          ]}
+        />
+        <SourceReview
+          sources={[
+            { label: "Saitama Prefectural Police - Driving licence information", href: "https://www.police.pref.saitama.lg.jp/menkyo/" },
+            { label: "JAF - Traffic Rules in Japan", href: "https://english.jaf.or.jp/driving-in-japan/traffic-rules" }
+          ]}
+        />
       </div>
     </div>
   );

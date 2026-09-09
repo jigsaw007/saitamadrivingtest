@@ -1,133 +1,103 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { FaPhone, FaHeartbeat, FaCarCrash, FaExclamationTriangle } from "react-icons/fa"; // Importing icons
+import Breadcrumbs from "../components/Breadcrumbs";
+import SourceReview from "../components/SourceReview";
+import GuideCTA from "../components/GuideCTA";
+import { FaPhone, FaHeartbeat, FaCarCrash, FaExclamationTriangle } from "react-icons/fa";
 
-const EmergencyGuide = () => {
-  const emergencyContacts = [
-    {
-      title: "Police",
-      number: "110",
-      description: "Call the police in case of accidents, theft, or other criminal activities.",
-      icon: <FaPhone className="text-primary" />,
-    },
-    {
-      title: "Ambulance/Fire",
-      number: "119",
-      description: "Call for medical emergencies, fires, or rescue services.",
-      icon: <FaHeartbeat className="text-danger" />,
-    },
-    {
-      title: "Roadside Assistance",
-      number: "0120-489-632",
-      description: "Call for towing services, flat tires, or vehicle breakdowns.",
-      icon: <FaCarCrash className="text-warning" />,
-    },
-    {
-      title: "Emergency Hotline (English)",
-      number: "03-5774-0992",
-      description: "A 24/7 hotline for English-speaking residents in Tokyo.",
-      icon: <FaExclamationTriangle className="text-info" />,
-    },
-  ];
+const emergencyContacts = [
+  {
+    title: "Police emergency",
+    number: "110",
+    description: "Use 110 for emergencies involving accidents, crimes or situations requiring an immediate police response.",
+    icon: <FaPhone className="text-primary" />,
+  },
+  {
+    title: "Ambulance / Fire",
+    number: "119",
+    description: "Use 119 for ambulance, fire and rescue emergencies.",
+    icon: <FaHeartbeat className="text-danger" />,
+  },
+  {
+    title: "JAF Road Service",
+    number: "#8139 / 0570-00-8139",
+    description: "JAF lists these numbers for roadside assistance in Japan and offers interpretation support in multiple languages.",
+    icon: <FaCarCrash className="text-warning" />,
+  },
+  {
+    title: "Police consultation (non-emergency)",
+    number: "#9110",
+    description: "Saitama Police lists #9110 for non-emergency police consultation. Do not use 110 for ordinary inquiries.",
+    icon: <FaExclamationTriangle className="text-info" />,
+  },
+];
 
-  const aedInfo = {
-    title: "Automated External Defibrillator (AED)",
-    description:
-      "AEDs are life-saving devices used to help someone experiencing sudden cardiac arrest. They are available in many public places, such as train stations, schools, and shopping centers.",
-    steps: [
-      "Call 119 immediately.",
-      "Locate the nearest AED (look for signs or ask for assistance).",
-      "Follow the voice instructions provided by the AED.",
-      "Perform CPR if trained, or follow the AED's guidance.",
-    ],
-  };
-
-  const towTruckInfo = {
-    title: "Tow Truck Services",
-    description:
-      "If your vehicle breaks down or is involved in an accident, you can call a tow truck service to transport your vehicle to a repair shop or safe location.",
-    tips: [
-      "Ensure your vehicle is in a safe location (e.g., the shoulder of the road).",
-      "Turn on your hazard lights to alert other drivers.",
-      "Call the roadside assistance number provided by your insurance company or use the general emergency number: 0120-489-632.",
-    ],
-  };
-
+export default function EmergencyGuide() {
   return (
     <div>
       <Navbar />
-      <div className="container mt-5 p-5 rounded shadow" style={{ backgroundColor: "#ffffff" }}>
-        <h1 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
-          <FaExclamationTriangle className="me-2 text-danger" /> Emergency Guide
-        </h1>
-        <p className="text-center mb-4" style={{ fontSize: "18px", fontFamily: "'Roboto', sans-serif" }}>
-          Learn what to do in case of emergencies, including contact numbers, AED usage, and tow truck services.
-        </p>
+      <main className="container content-page mt-5">
+        <Breadcrumbs items={[{ label: "Resources", to: "/resources" }, { label: "Emergency Guide" }]} />
+        <h1><FaExclamationTriangle className="me-2 text-danger" />Driving Emergency Guide in Japan</h1>
+        <p className="lead">Know the official emergency numbers and basic safety steps before you need them.</p>
 
-        {/* Emergency Contacts Section */}
-        <section className="mb-5">
-          <h2 className="text-primary" style={{ fontFamily: "'Poppins', sans-serif'" }}>
-            <FaPhone className="me-2 text-primary" /> Emergency Contacts
-          </h2>
-          <div className="row">
-            {emergencyContacts.map((contact, index) => (
-              <div key={index} className="col-md-6 mb-4">
-                <div className="card shadow-sm p-3" style={{ borderRadius: "10px" }}>
-                  <h5>
-                    {contact.icon} {contact.title}
-                  </h5>
-                  <h6 className="text-secondary">{contact.number}</h6>
-                  <p style={{ fontSize: "14px", fontFamily: "'Roboto', sans-serif" }}>
-                    {contact.description}
-                  </p>
+        <div className="notice-box">
+          <strong>Immediate danger?</strong> Call the appropriate emergency service. This page is a study reference, not emergency dispatch or medical advice.
+        </div>
+
+        <section className="mt-4">
+          <h2><FaPhone className="me-2" />Emergency contacts</h2>
+          <div className="row g-3">
+            {emergencyContacts.map((contact) => (
+              <div key={contact.title} className="col-md-6">
+                <div className="card h-100 shadow-sm p-3">
+                  <h3 className="h5">{contact.icon} {contact.title}</h3>
+                  <div className="h4 mb-2">{contact.number}</div>
+                  <p className="mb-0">{contact.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* AED Information Section */}
-        <section className="mb-5">
-          <h2 className="text-primary" style={{ fontFamily: "'Poppins', sans-serif'" }}>
-            <FaHeartbeat className="me-2 text-danger" /> AED Information
-          </h2>
-          <div className="card shadow-sm p-3" style={{ borderRadius: "10px" }}>
-            <h5>{aedInfo.title}</h5>
-            <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-              {aedInfo.description}
-            </p>
-            <ul>
-              {aedInfo.steps.map((step, index) => (
-                <li key={index} style={{ fontSize: "14px", fontFamily: "'Roboto', sans-serif" }}>
-                  {step}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <section>
+          <h2>After a traffic accident</h2>
+          <ol>
+            <li>Prioritise personal safety and avoid creating a secondary collision.</li>
+            <li>If anyone is injured or needs medical help, call 119.</li>
+            <li>For a traffic accident requiring police attendance, call 110.</li>
+            <li>Follow instructions from emergency services and your insurer or roadside-assistance provider.</li>
+          </ol>
         </section>
 
-        {/* Tow Truck Information Section */}
-        <section className="mb-5">
-          <h2 className="text-primary" style={{ fontFamily: "'Poppins', sans-serif'" }}>
-            <FaCarCrash className="me-2 text-warning" /> Tow Truck Services
-          </h2>
-          <div className="card shadow-sm p-3" style={{ borderRadius: "10px" }}>
-            <h5>{towTruckInfo.title}</h5>
-            <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
-              {towTruckInfo.description}
-            </p>
-            <ul>
-              {towTruckInfo.tips.map((tip, index) => (
-                <li key={index} style={{ fontSize: "14px", fontFamily: "'Roboto', sans-serif" }}>
-                  {tip}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <section>
+          <h2>Vehicle breakdown</h2>
+          <p>Move away from danger when it is safe to do so, make the vehicle visible to other traffic, and use your insurer, rental-car provider or a roadside-assistance service. On expressways, follow emergency guidance and do not remain in an unsafe position near moving traffic.</p>
+          <p>JAF currently lists <strong>#8139</strong> and <strong>0570-00-8139</strong> for road service in Japan.</p>
         </section>
-      </div>
+
+        <section>
+          <h2>AED and medical emergency</h2>
+          <p>If someone is unresponsive or appears to be in cardiac arrest, call 119 and follow the dispatcher or AED voice instructions. Public AEDs provide step-by-step prompts when used.</p>
+        </section>
+
+        <GuideCTA
+          title="Continue with safety study"
+          links={[
+            { label: "Road safety", to: "/road-safety-and-driving" },
+            { label: "Road signs", to: "/road-signs" },
+            { label: "Test-day checklist", to: "/test-day-checklist" }
+          ]}
+        />
+
+        <SourceReview
+          sources={[
+            { label: "Saitama Police - 110 emergency information", href: "https://www.police.pref.saitama.lg.jp/a0030/english/english-110ban.html" },
+            { label: "JAF - Emergency Measures", href: "https://english.jaf.or.jp/driving-in-japan/emergencymeasures" },
+            { label: "JAF - Call Road Service", href: "https://english.jaf.or.jp/call-road-service/call-jaf" }
+          ]}
+        />
+      </main>
     </div>
   );
-};
-
-export default EmergencyGuide;
+}

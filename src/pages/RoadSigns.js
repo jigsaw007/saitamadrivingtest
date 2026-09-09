@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import Breadcrumbs from "../components/Breadcrumbs";
+import SourceReview from "../components/SourceReview";
+import GuideCTA from "../components/GuideCTA";
 import "./RoadSigns.css"; // Add custom CSS for styling (see below)
 
 const RoadSigns = () => {
@@ -62,6 +65,7 @@ const RoadSigns = () => {
     <div>
       <Navbar />
       <div className="container mt-5 p-5 rounded shadow" style={{ backgroundColor: "#ffffff" }}>
+        <Breadcrumbs items={[{ label: "Resources", to: "/resources" }, { label: "Road Signs" }]} />
         <h1 className="text-center mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
           Japanese Road Signs | 日本の道路標識
         </h1>
@@ -84,8 +88,10 @@ const RoadSigns = () => {
               >
                 <img
                   src={sign.image}
-                  alt={`Road Sign ${index + 1}`}
+                  alt={`${sign.title} - Japanese road sign`}
                   className="road-sign-image"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="road-sign-info mt-3">
                   <h5 className="text-primary">{sign.title}</h5>
@@ -97,6 +103,21 @@ const RoadSigns = () => {
             </div>
           ))}
         </div>
+
+        <GuideCTA
+          title="Study related topics"
+          links={[
+            { label: "Driving vocabulary", to: "/driving-test-vocabulary" },
+            { label: "Road safety", to: "/road-safety-and-driving" },
+            { label: "FAQ", to: "/faq" }
+          ]}
+        />
+        <SourceReview
+          sources={[
+            { label: "JAF - Traffic Rules in Japan", href: "https://english.jaf.or.jp/driving-in-japan/traffic-rules" },
+            { label: "JAF - Rules of the Road", href: "https://english.jaf.or.jp/driving-in-japan/rules-of-the-road" }
+          ]}
+        />
 
         {fullscreenImage && (
           <div className="fullscreen-overlay" onClick={closeFullscreen}>
