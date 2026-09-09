@@ -29,7 +29,7 @@ const Guide = () => {
             <strong>Requirements:</strong>
             <ul>
               <li><FaCheckCircle className="text-success me-2" /> Minimum age: 18 years.</li>
-              <li><FaCheckCircle className="text-success me-2" /> Completion of mandatory lessons at a certified driving school.</li>
+              <li><FaCheckCircle className="text-success me-2" /> Requirements differ depending on whether you attend a designated driving school or take another permitted licensing route; confirm the current official procedure.</li>
               <li><FaCheckCircle className="text-success me-2" /> Passing a vision and hearing test.</li>
             </ul>
           </p>
@@ -66,7 +66,7 @@ const Guide = () => {
             <strong>Requirements:</strong>
             <ul>
               <li><FaCheckCircle className="text-success me-2" /> A valid provisional license (仮免許).</li>
-              <li><FaCheckCircle className="text-success me-2" /> Completion of supervised driving hours as required.</li>
+              <li><FaCheckCircle className="text-success me-2" /> Complete any supervised road-practice requirements that apply to your licensing route, following the current official instructions.</li>
               <li><FaCheckCircle className="text-success me-2" /> Passing a vision and hearing test (if not already passed during Karimen).</li>
             </ul>
           </p>
@@ -103,11 +103,11 @@ const Guide = () => {
           </div>
           <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
             <strong>Q: How long does it take to get a driving license in Saitama?</strong><br />
-            <FaCheckCircle className="text-success me-2" /> A: The process typically takes 2-3 months, depending on your progress and the driving school's schedule.
+            <FaCheckCircle className="text-success me-2" /> A: There is no single reliable duration for every applicant. Timing depends on your licensing route, reservations, training progress and test availability.
           </p>
           <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
             <strong>Q: Can I take the driving test in English?</strong><br />
-            <FaCheckCircle className="text-success me-2" /> A: Yes, some driving schools offer tests in English, but it's best to confirm with your chosen school.
+            <FaCheckCircle className="text-success me-2" /> A: Foreign-language availability depends on the test and location. Saitama Prefectural Police publishes current information about supported written-test languages; confirm when booking or applying.
           </p>
           <p style={{ fontSize: "16px", fontFamily: "'Roboto', sans-serif" }}>
             <strong>Q: What happens if I fail the practical test?</strong><br />
